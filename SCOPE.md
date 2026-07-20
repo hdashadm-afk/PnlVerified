@@ -1,0 +1,60 @@
+# PNLVerified — Scope
+Finalized 2026-07-20. Not yet built — this is the scope decision, build comes later.
+
+## Architecture
+
+- **Standalone product.** Own auth, own database, own deploy — not a Station Control add-on. A customer may buy PNLVerified without ever running Station Control, StaffVerified, or OpsVerified, matching how StaffVerified (`staffverified-app`) and OpsVerified (`fuel-ops`) already work. Station Control is the optional hub that gets richer when connected; it is not a dependency for any of the other three.
+- **Data entry model:** department-head intake form (Accounting), not spreadsheet upload — matches the existing `department_reports` pattern in `katiwala-owner-os-` and keeps the module clerk-usable per the Simple P&L Rule (a disciplined daily reporting system a CPA can later review/reconcile/audit, not a heavy accounting suite).
+
+## Data boundary vs. OpsVerified
+
+Confirmed by comparing PNLVerified's reference spreadsheets (`Helium_Profitability.xlsx`, `DipstickMonitoring.xlsx`, `CASH_COUNT_NEW.xlsx`) against `fuel-ops`'s actual built app (Smart Station Pro / V100SSP):
+
+**OpsVerified already owns (built, not duplicated here):**
+- Dipstick readings → volume (Dipstick tab, "dipstick is the source of truth")
+- Delivery Variance, Transfer Variance
+- Shift-level cash variance (DSR + AM sales vs. actual cash count)
+- Revenue computed from dipstick data
+- Variance alert webhooks (dipstick vs. pump)
+
+**PNLVerified owns:**
+- **COGS / inventory costing** — FIFO cost-per-liter tracking by product and supplier (Ops tracks volume, not cost)
+- **Payroll cost** — received as a **single imported number from StaffVerified** per period; PNLVerified does not compute SSS/PhilHealth/Pag-IBIG/13th-month/attendance itself
+- **Utilities** — electricity (KWH + bill), water, internet, mobile load
+- **Admin / other opex** — rent, repairs, permits, real property tax, fire insurance, other
+- **Cash position** — bank-level reconciliation across accounts and sales channels (cash, Gcash, PO/coop sales), distinct from Ops's shift-level cash count
+- **Profitability roll-up** — Revenue (referenced from OpsVerified) − COGS − Opex (payroll + utilities + admin) = station profit
+
+Revenue and volume are referenced from OpsVerified as read-only input, not re-entered — this is the Accounting/Ops Bridge Rule already documented in `katiwala-owner-os-`: Ops detects/records operational reality, Accounting (P&L Simple) validates/records/classifies the resulting transaction.
+
+## Intake form (draft field spec)
+
+Submitted by the Accounting department head, per station, per period.
+
+**1. Revenue** — read-only reference block from OpsVerified (station, product, liters, revenue); not re-keyed.
+
+**2. COGS / Inventory**
+- Supplier, product, purchase quantity (L), purchase price/L
+- System computes: total purchase cost, running FIFO average cost, period COGS
+
+**3. Payroll cost**
+- Total payroll cost for the period (single number, imported from StaffVerified)
+
+**4. Utilities**
+- Electricity (KWH + bill amount), water, internet, mobile load
+
+**5. Admin / other opex**
+- Rent, repairs, permits, real property tax, fire insurance, other (free text + amount)
+
+**6. Cash position**
+- Bank account + beginning balance
+- Sales by channel: cash, Gcash, PO/coop
+- Other cash proceeds / inter-station transfers
+- Exception notes
+
+**Output (system-computed):** Revenue (Ops) − COGS (FIFO) − Opex (payroll + utilities + admin) = station profit.
+
+## Open items for the build phase
+
+- Exact mechanism for pulling revenue/volume from OpsVerified and payroll cost from StaffVerified (live integration vs. manual entry until those connections are wired) — not decided yet.
+- Tech stack / hosting (likely matching StaffVerified's Next.js + TypeScript + Supabase pattern, not yet confirmed).

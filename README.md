@@ -4,7 +4,7 @@
 
 ## Status
 
-Placeholder repo. No app code yet — scope and feature set are still "details later" per the founder's own notes; this repo exists so the module has its own home per the Katiwala architecture rule ("every page has their own repo"), matching the pattern already used by [`staffverified-app`](https://github.com/hdashadm-afk/staffverified-app) (StaffVerified) and [`fuel-ops`](https://github.com/hdashadm-afk/fuel-ops) (OpsVerified/StationVerified).
+Scope finalized (see [`SCOPE.md`](./SCOPE.md)) — no app code yet, build comes next. This repo exists so the module has its own home per the Katiwala architecture rule ("every page has their own repo"), matching the pattern already used by [`staffverified-app`](https://github.com/hdashadm-afk/staffverified-app) (StaffVerified) and [`fuel-ops`](https://github.com/hdashadm-afk/fuel-ops) (OpsVerified/StationVerified).
 
 ## Context
 
