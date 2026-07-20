@@ -32,20 +32,14 @@ export async function signup(formData: FormData) {
   const fullName = formData.get("full_name") as string;
   const role = formData.get("role") as string;
 
-  const { data, error } = await supabase.auth.signUp({ email, password });
+  const { data, error } = await supabase.auth.signUp({
+    email,
+    password,
+    options: { data: { full_name: fullName, role } },
+  });
 
   if (error || !data.user) {
     redirect(`/signup?error=${encodeURIComponent(error?.message ?? "Sign up failed")}`);
-  }
-
-  const { error: profileError } = await supabase.from("profiles").insert({
-    id: data.user!.id,
-    full_name: fullName,
-    role,
-  });
-
-  if (profileError) {
-    redirect(`/signup?error=${encodeURIComponent(profileError.message)}`);
   }
 
   redirect("/");
