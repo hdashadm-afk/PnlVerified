@@ -39,7 +39,13 @@ Ownership split:
 
 **Inter-station transfer before supplier purchase.** Confirmed: when a station hits its reorder point, check other stations for surplus stock before triggering a new supplier purchase order. This is an existing operational SOP, not just a data field — `fuel-ops` already has a live **Transfer Variance** tab (role-gated: Acctg Audit, Supervisor, CPU Collector) doing "Transfer Out vs Transfer In · Volume reconciliation per route," and `SSM-Conso` already tracks "Stock Transfer -in/-out" per station/product. This stays fully inside Ops's ownership (same as the trigger decision itself) — the transfer SOP itself does not need to be built, only connected to the reorder-trigger decision. PNLVerified's role for a transfer differs from a purchase: no new COGS is created since no external cost is incurred, but the transfer still needs to move inventory value between stations at existing cost basis for station-level FIFO accuracy — one open item below.
 
-Not yet decided: where the per-station/product lead time values are configured/stored, the actual purchase-order-creation workflow (who places it, what happens on trigger), whether the reorder logic always prefers transfer-if-available or needs a threshold/cost comparison (transfer cost vs. purchase cost) before choosing, and how a transfer's inventory value moves between stations' FIFO cost basis in PNLVerified. All build-phase questions, not scope questions.
+**Lead time source.** Confirmed 2026-07-20: lead time is an **Owner-input field**, per station/product, set by Agnes Castro and Ed Castro — not system-calculated.
+
+**Purchase order creation.** Confirmed flow: Ops triggers reorder (after checking inter-station transfer first) → if no station has surplus, system drafts a PO (supplier, product, suggested quantity) → routed to the Owners (Agnes/Ed) for approval before it goes to the supplier → once received, PNLVerified books the actual COGS entry (matching the existing "Purchase - Alcid / Purchase - PNC" pattern in the reference spreadsheet).
+
+**Transfer cost basis (FIFO).** Confirmed: a transfer moves inventory at the **sending station's current FIFO average cost** — the receiving station's stock increases at that same per-liter cost, blending into its own running average. No COGS impact on either side, since no external cost is incurred; it's a pure inventory value movement between stations' FIFO layers.
+
+Still open for the build phase: exact PO-drafting UI/workflow details (how the Owners review/approve — in-app, notification, etc.) and whether a threshold/cost comparison is ever needed between transfer vs. purchase (current design always prefers transfer-if-available, no comparison logic).
 
 ## Intake form (draft field spec)
 
