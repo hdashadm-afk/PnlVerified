@@ -37,7 +37,9 @@ Ownership split:
 - **PNLVerified owns:** recording the resulting purchase as a COGS transaction once an order is placed (feeds the existing FIFO inventory costing above) — it does not decide when to reorder, only accounts for the purchase after the fact.
 - **Station Control displays** the reorder status/alert as a hub view, sourced from Ops, tagged per the existing KPI Source Label Rule (not owned/computed by Station Control itself).
 
-Not yet decided: where the per-station/product lead time values are configured/stored, and the actual purchase-order-creation workflow (who places it, what happens on trigger) — both are build-phase questions, not scope questions.
+**Inter-station transfer before supplier purchase.** Confirmed: when a station hits its reorder point, check other stations for surplus stock before triggering a new supplier purchase order — already partially built (Ops already tracks "Stock Transfer -in/-out" per station/product in `SSM-Conso`, and `fuel-ops` already has a Transfer Variance tab for recording the discrepancy after a physical transfer). This stays inside Ops's ownership (same as the trigger decision itself). PNLVerified's role for a transfer differs from a purchase: no new COGS is created since no external cost is incurred, but the transfer still needs to move inventory value between stations at existing cost basis for station-level FIFO accuracy — one open item below.
+
+Not yet decided: where the per-station/product lead time values are configured/stored, the actual purchase-order-creation workflow (who places it, what happens on trigger), whether the reorder logic always prefers transfer-if-available or needs a threshold/cost comparison (transfer cost vs. purchase cost) before choosing, and how a transfer's inventory value moves between stations' FIFO cost basis in PNLVerified. All build-phase questions, not scope questions.
 
 ## Intake form (draft field spec)
 
