@@ -27,6 +27,18 @@ Confirmed by comparing PNLVerified's reference spreadsheets (`Helium_Profitabili
 
 Revenue and volume are referenced from OpsVerified as read-only input, not re-entered — this is the Accounting/Ops Bridge Rule already documented in `katiwala-owner-os-`: Ops detects/records operational reality, Accounting (P&L Simple) validates/records/classifies the resulting transaction.
 
+## Reorder trigger (cross-module — Ops + PNLVerified + Station Control)
+
+Confirmed reference: `Helium_Profitability.xlsx`'s `Stock-reorderPoint` sheet already computes this today — reorder point = **DIOH (Days Inventory On Hand) × daily average dispense**, tracked per station per product, with a flat DIOH constant (currently 3) in the current spreadsheet. This is the "Purchasing Bridge" workflow `katiwala-owner-os-`'s docs already name as deferred ("Ops-triggered, Accounting-validated... until there's a concrete reason to promote it to its own pillar") — this is that concrete reason.
+
+Ownership split:
+- **OpsVerified owns:** current stock balance and daily average dispense (both volume metrics, dipstick-derived) and the reorder trigger/alert itself — it already has the underlying stock+usage data.
+- **Lead time is defined per station/product** (not a single global constant, and not per-supplier) — confirmed 2026-07-20. Reorder point = (lead time × daily avg dispense) + safety stock, computed per station per product.
+- **PNLVerified owns:** recording the resulting purchase as a COGS transaction once an order is placed (feeds the existing FIFO inventory costing above) — it does not decide when to reorder, only accounts for the purchase after the fact.
+- **Station Control displays** the reorder status/alert as a hub view, sourced from Ops, tagged per the existing KPI Source Label Rule (not owned/computed by Station Control itself).
+
+Not yet decided: where the per-station/product lead time values are configured/stored, and the actual purchase-order-creation workflow (who places it, what happens on trigger) — both are build-phase questions, not scope questions.
+
 ## Intake form (draft field spec)
 
 Submitted by the Accounting department head, per station, per period.
