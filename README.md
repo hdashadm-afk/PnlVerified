@@ -32,4 +32,6 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Database
 
-Schema is applied directly to the project's Supabase instance (see `SCOPE.md` for the data model rationale): `stations`, `products`, `profiles`, `inventory_purchases`, `ops_reference_entries` (revenue/volume reference from OpsVerified), `payroll_costs` (single number from StaffVerified), `utility_bills`, `admin_opex`, `cash_position_entries`, `inventory_ledger` (moving-average COGS, trigger-populated), and the `station_profitability` view (Revenue − COGS − Opex, rolled up monthly per station).
+Schema lives in `supabase/migrations/` (reconstructed 2026-07-20 via schema introspection — the originally-applied files were never committed) and `supabase/seed.sql` for reference data. See `SCOPE.md` for the data model rationale: `stations`, `products`, `profiles`, `inventory_purchases`, `ops_reference_entries` (revenue/volume reference from OpsVerified), `payroll_costs` (single number from StaffVerified), `utility_bills`, `admin_opex`, `cash_position_entries`, `inventory_ledger` (moving-average COGS, trigger-populated), and the `station_profitability` view (Revenue − COGS − Opex, rolled up monthly per station).
+
+To apply against a fresh Supabase project: `supabase link --project-ref <ref>` then `supabase db push`.

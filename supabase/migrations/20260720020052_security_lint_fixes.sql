@@ -1,0 +1,6 @@
+-- Reconstructed from live schema introspection (2026-07-20) — see 20260720015715_core_tables.sql.
+-- Original diff not recoverable (never committed); Supabase's linter flags functions with a
+-- mutable search_path as a security advisory. That fix (`set search_path to 'public'`) is
+-- already folded into both trigger functions in 20260720015738_inventory_ledger_moving_average.sql,
+-- which is the live, current state. This file is a no-op placeholder so the migration history
+-- (version 20260720020052 / name 005_security_lint_fixes) still lines up with the remote project.
