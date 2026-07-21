@@ -33,7 +33,7 @@ export default async function SignupPage({
               name="full_name"
               type="text"
               required
-              className="w-full rounded-md border border-neutral-300 px-3 py-2 text-sm focus:border-neutral-900 focus:outline-none"
+              className="w-full rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 focus:border-neutral-900 focus:outline-none"
             />
           </div>
           <div>
@@ -44,7 +44,7 @@ export default async function SignupPage({
               id="role"
               name="role"
               required
-              className="w-full rounded-md border border-neutral-300 px-3 py-2 text-sm focus:border-neutral-900 focus:outline-none"
+              className="w-full rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 focus:border-neutral-900 focus:outline-none"
             >
               <option value="accounting_head">Accounting Department Head</option>
               <option value="owner">Owner</option>
@@ -60,7 +60,7 @@ export default async function SignupPage({
               name="email"
               type="email"
               required
-              className="w-full rounded-md border border-neutral-300 px-3 py-2 text-sm focus:border-neutral-900 focus:outline-none"
+              className="w-full rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 focus:border-neutral-900 focus:outline-none"
             />
           </div>
           <div>
@@ -73,7 +73,7 @@ export default async function SignupPage({
               type="password"
               required
               minLength={6}
-              className="w-full rounded-md border border-neutral-300 px-3 py-2 text-sm focus:border-neutral-900 focus:outline-none"
+              className="w-full rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 focus:border-neutral-900 focus:outline-none"
             />
           </div>
           <button
