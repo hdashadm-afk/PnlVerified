@@ -34,3 +34,19 @@ every decision still waiting on the founder, across every repo the session
 has touched, not a top-3. Opening line: **"Boss, here's your Lens today"**
 (or equivalent), then straight into the full table — not a re-explanation
 of what Founder's Lens is each time.
+
+# Instruction-delivery preference — tabular artifact checklists
+
+Confirmed by the founder 2026-07-21 (same rule now in `katiwala-owner-os-`'s
+`docs/MASTER_DIRECTION.md` §11 and `staffverified-app`'s `AGENTS.md`):
+multi-step setup instructions that span more than one external site (e.g.
+Vercel + Supabase) go in a small published HTML artifact with a table —
+columns URL / Topic / Steps, one row per step, a checkbox per row
+(persisted via localStorage), and tap-to-copy chips for exact literal
+values (env var names, keys, secrets) instead of text to retype.
+Chat-paragraph step-by-step instructions were flagged as noisy and hard to
+follow on mobile — don't revert to that. Reuse the same artifact
+file/URL for the current task, redeploy with updated rows when the task
+changes. Chat replies stay short; the table carries the detail. Apply
+whenever a task has 3+ sequential steps across more than one external
+dashboard/site.
