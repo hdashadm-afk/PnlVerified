@@ -10,6 +10,11 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  /* Dipstify brand accent (katiwala-owner-os-/docs/DIPSTIFY_BRAND_GUIDE.md).
+     The existing neutral-900 near-black already reads close to on-brand,
+     so left as-is rather than renamed — this token exists for future use
+     as a signal color (badges, highlights), not a fill. */
+  --color-brand-yellow: #F5C400;
 }
 
 @media (prefers-color-scheme: dark) {
