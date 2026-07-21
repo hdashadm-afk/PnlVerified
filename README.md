@@ -1,20 +1,20 @@
 # PNLVerified
 
-**Simple P&L** — part of the Katiwala product family.
+**Simple P&L** — part of the Dipstify product family.
 
 ## Status
 
-In development. Scope is finalized (see [`SCOPE.md`](./SCOPE.md)); this repo now has a working Next.js + Supabase scaffold with the core schema applied. This repo exists so the module has its own home per the Katiwala architecture rule ("every page has their own repo"), matching the pattern already used by [`staffverified-app`](https://github.com/hdashadm-afk/staffverified-app) (StaffVerified) and [`fuel-ops`](https://github.com/hdashadm-afk/fuel-ops) (OpsVerified/StationVerified).
+In development. Scope is finalized (see [`SCOPE.md`](./SCOPE.md)); this repo now has a working Next.js + Supabase scaffold with the core schema applied, and base Dipstify branding applied (logo, product-family label) as of 2026-07-21. This repo exists so the module has its own home per the Dipstify architecture rule ("every page has their own repo"), matching the pattern already used by [`staffverified-app`](https://github.com/hdashadm-afk/staffverified-app) (StaffVerified) and [`fuel-ops`](https://github.com/hdashadm-afk/fuel-ops) (OpsVerified/StationVerified).
 
 ## Context
 
-- PNLVerified is the new brand name for what the Katiwala Founder OS currently calls "P&L (Simple)" — the existing Accounting department type inside [`katiwala-owner-os-`](https://github.com/hdashadm-afk/katiwala-owner-os-), one of KOS's four connected modules (CEO's Space, HR & Pay, P&L (Simple), Ops).
+- PNLVerified is the new brand name for what the Founder OS currently calls "P&L (Simple)" — the existing Accounting department type inside [`katiwala-owner-os-`](https://github.com/hdashadm-afk/katiwala-owner-os-), one of KOS's four connected modules (CEO's Space, HR & Pay, P&L (Simple), Ops).
 - Reference logic already built there: `supabase/migrations/031_pnl_pulse_margin.sql`, `035_cost_price_margin.sql`, `036_daily_capex_pnl.sql`, `042_generic_accounting.sql`, `043_capex_to_opex.sql`.
 - The **Simple P&L Rule** (documented in `katiwala-owner-os-`'s master direction docs): P&L (Simple) must stay clerk-usable, not become a heavy accounting suite.
 
 ## Brand family
 
-Part of the shared Katiwala ecosystem — same logo logic, color system, typography, spacing, and component style as Katiwala AI App, CEOs Space, StaffVerified, StationVerified, CafeVerified, and HotelVerified. See `katiwala-owner-os-`'s `docs/BRAND_GUIDE.md` for the shared design system this repo should follow once UI work starts.
+Part of the shared Dipstify ecosystem — same logo logic, color system, typography, spacing, and component style as Dipstify, CEOs Space, StaffVerified, and StationVerified. See `katiwala-owner-os-`'s `docs/DIPSTIFY_BRAND_GUIDE.md` for the shared design system (black/white/steel-gray + safety-yellow accent, Inter Tight/Inter/JetBrains Mono).
 
 ## Stack
 

@@ -23,8 +23,11 @@ export default async function ProfitabilityPage() {
   if (!user) {
     return (
       <div className="mx-auto max-w-3xl px-4 py-16 text-center">
-        <h1 className="mb-2 text-lg font-semibold text-neutral-900">PNLVerified</h1>
-        <p className="mb-6 text-sm text-neutral-500">Simple P&L — part of the Katiwala product family.</p>
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/brand/dipstify-app-icon.png" alt="Dipstify" width={40} height={40} className="mx-auto mb-2" />
+        <span className="text-[10px] font-medium uppercase tracking-wide text-neutral-400">Dipstify</span>
+        <h1 className="-mt-0.5 mb-2 text-lg font-semibold text-neutral-900">PNLVerified</h1>
+        <p className="mb-6 text-sm text-neutral-500">Simple P&L — part of the Dipstify product family.</p>
         <Link href="/login" className="rounded-md bg-neutral-900 px-4 py-2 text-sm font-medium text-white">
           Sign in
         </Link>

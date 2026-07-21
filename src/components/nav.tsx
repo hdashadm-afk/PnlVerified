@@ -14,7 +14,11 @@ export async function Nav() {
     <nav className="border-b border-neutral-200 bg-white">
       <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
         <div className="flex items-center gap-6">
-          <span className="text-sm font-semibold text-neutral-900">PNLVerified</span>
+          <div className="flex items-center gap-2">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src="/brand/dipstify-icon-only.png" alt="Dipstify" width={20} height={20} />
+            <span className="text-sm font-semibold text-neutral-900">PNLVerified</span>
+          </div>
           <Link href="/" className="text-sm text-neutral-600 hover:text-neutral-900">
             Profitability
           </Link>

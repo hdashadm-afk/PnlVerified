@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "PNLVerified",
-  description: "Simple P&L — part of the Katiwala product family",
+  description: "Simple P&L — part of the Dipstify product family",
 };
 
 export default function RootLayout({
