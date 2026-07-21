@@ -29,9 +29,16 @@ export async function updateSession(request: NextRequest) {
 
   const isAuthRoute =
     request.nextUrl.pathname.startsWith("/login") ||
-    request.nextUrl.pathname.startsWith("/signup");
+    request.nextUrl.pathname.startsWith("/signup") ||
+    request.nextUrl.pathname.startsWith("/forgot-password");
 
-  if (!user && !isAuthRoute) {
+  // /auth/confirm is the password-reset email link's landing route — it's
+  // what *establishes* the session (via verifyOtp), so it must be reachable
+  // while still unauthenticated, same reasoning as isAuthRoute above but
+  // kept separate since it's not a page a user visits directly.
+  const isAuthCallback = request.nextUrl.pathname.startsWith("/auth/confirm");
+
+  if (!user && !isAuthRoute && !isAuthCallback) {
     const url = request.nextUrl.clone();
     url.pathname = "/login";
     return NextResponse.redirect(url);
