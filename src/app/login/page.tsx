@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { login } from "./actions";
+import { PasswordField } from "@/components/password-field";
 
 export default async function LoginPage({
   searchParams,
@@ -45,13 +46,7 @@ export default async function LoginPage({
                 Forgot password?
               </Link>
             </div>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              required
-              className="w-full rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 focus:border-neutral-900 focus:outline-none"
-            />
+            <PasswordField id="password" name="password" required />
           </div>
           <button
             type="submit"
