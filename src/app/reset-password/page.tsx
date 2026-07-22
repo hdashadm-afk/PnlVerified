@@ -1,4 +1,5 @@
 import { updatePassword } from "./actions";
+import { PasswordField } from "@/components/password-field";
 
 export default async function ResetPasswordPage({
   searchParams,
@@ -26,27 +27,13 @@ export default async function ResetPasswordPage({
             <label className="mb-1 block text-sm font-medium text-neutral-700" htmlFor="password">
               New password
             </label>
-            <input
-              id="password"
-              name="password"
-              type="password"
-              required
-              minLength={6}
-              className="w-full rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 focus:border-neutral-900 focus:outline-none"
-            />
+            <PasswordField id="password" name="password" required minLength={6} />
           </div>
           <div>
             <label className="mb-1 block text-sm font-medium text-neutral-700" htmlFor="confirm_password">
               Confirm new password
             </label>
-            <input
-              id="confirm_password"
-              name="confirm_password"
-              type="password"
-              required
-              minLength={6}
-              className="w-full rounded-md border border-neutral-300 bg-white px-3 py-2 text-sm text-neutral-900 focus:border-neutral-900 focus:outline-none"
-            />
+            <PasswordField id="confirm_password" name="confirm_password" required minLength={6} />
           </div>
           <button
             type="submit"
