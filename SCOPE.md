@@ -76,5 +76,5 @@ Submitted by the Accounting department head, per station, per period.
 
 ## Open items for the build phase
 
-- Exact mechanism for pulling revenue/volume from OpsVerified and payroll cost from StaffVerified (live integration vs. manual entry until those connections are wired) — not decided yet.
+- ~~Exact mechanism for pulling revenue/volume from OpsVerified~~ — **decided and built.** Intake Section 1 reads `smp_daily_outtake` directly from fuel-ops's own Supabase project (same read-only anon-key pattern as StaffVerified's `lib/ops-outtake.ts`, which reads the same table for attendance), surfaces a station-level total-revenue/total-liters reference for the selected station/date, and Accounting applies it into the form fields on request — never auto-submitted. See `src/lib/ops-reference.ts`. Payroll cost from StaffVerified is still manual entry — pulling it live would require StaffVerified to expose a new read-only endpoint, which hasn't been built/approved yet.
 - Tech stack / hosting (likely matching StaffVerified's Next.js + TypeScript + Supabase pattern, not yet confirmed).

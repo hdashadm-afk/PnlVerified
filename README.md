@@ -4,7 +4,7 @@
 
 ## Status
 
-In development. Scope is finalized (see [`SCOPE.md`](./SCOPE.md)); this repo now has a working Next.js + Supabase scaffold with the core schema applied, and base Dipstify branding applied (logo, product-family label) as of 2026-07-21. This repo exists so the module has its own home per the Dipstify architecture rule ("every page has their own repo"), matching the pattern already used by [`staffverified-app`](https://github.com/hdashadm-afk/staffverified-app) (StaffVerified) and [`fuel-ops`](https://github.com/hdashadm-afk/fuel-ops) (OpsVerified/StationVerified).
+In development. Scope is finalized (see [`SCOPE.md`](./SCOPE.md)); this repo now has a working Next.js + Supabase scaffold with the core schema applied, and base Dipstify branding applied (logo, product-family label) as of 2026-07-21. The intake form's Revenue/Volume section now pulls a live reference from OpsVerified's confirmed Daily Outtake (`src/lib/ops-reference.ts`) as of 2026-07-28 — Accounting applies it on request, still keyed manually otherwise. This repo exists so the module has its own home per the Dipstify architecture rule ("every page has their own repo"), matching the pattern already used by [`staffverified-app`](https://github.com/hdashadm-afk/staffverified-app) (StaffVerified) and [`fuel-ops`](https://github.com/hdashadm-afk/fuel-ops) (OpsVerified/StationVerified).
 
 ## Context
 
