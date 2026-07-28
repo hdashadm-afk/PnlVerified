@@ -1,5 +1,6 @@
 import { createClient } from "@/lib/supabase/server";
 import type { Station, Product } from "@/types/db";
+import { OpsReferenceSection } from "@/components/intake/OpsReferenceSection";
 import {
   submitOpsReference,
   submitInventoryPurchase,
@@ -95,24 +96,9 @@ export default async function IntakePage() {
       <Section
         number="1"
         title="Revenue / Volume (Ops reference)"
-        subtitle="Reference from OpsVerified. Manual entry until the live OpsVerified integration is built — not re-computed here."
+        subtitle="Reference from OpsVerified — pulls the confirmed Daily Outtake for the selected station/date; Apply fills the fields below, or key them in manually if Ops hasn't confirmed yet."
       >
-        <form action={submitOpsReference} className="grid grid-cols-2 gap-3">
-          <Field label="Station"><StationSelect stations={stationList} /></Field>
-          <Field label="Product"><ProductSelect products={productList} /></Field>
-          <Field label="Report date">
-            <input type="date" name="report_date" required className={inputClass} />
-          </Field>
-          <Field label="Liters dispensed">
-            <input type="number" step="0.01" name="liters_dispensed" required className={inputClass} />
-          </Field>
-          <Field label="Revenue (₱)">
-            <input type="number" step="0.01" name="revenue" required className={inputClass} />
-          </Field>
-          <div className="col-span-2">
-            <button type="submit" className={buttonClass}>Save</button>
-          </div>
-        </form>
+        <OpsReferenceSection stations={stationList} products={productList} action={submitOpsReference} />
       </Section>
 
       <Section
