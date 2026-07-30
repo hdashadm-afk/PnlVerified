@@ -121,3 +121,12 @@ Report the triage as a table (Item / Decision / Action), one row per
 branch — the same Standard Instruction Form shape, applied to a decision
 list instead of a step list. Don't skip straight to merging or deleting
 a pileup without producing this table first.
+
+# Presentation preference — always itemize
+
+Confirmed by the founder: whenever a reply presents multiple items,
+points, categories, or options — not just Founder's Lens tables — use a
+numbered list, not unnumbered prose or bullets. Lets the founder
+reference something by number ("what about 3") the same way Founder's
+Lens rows already work. Applies broadly: breakdowns, triage results,
+option sets, anything with more than one discrete thing being presented.
