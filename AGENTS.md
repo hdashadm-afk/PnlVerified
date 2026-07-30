@@ -33,7 +33,10 @@ exhaustive, not curated — every open PR, every unmerged/unactioned item,
 every decision still waiting on the founder, across every repo the session
 has touched, not a top-3. Opening line: **"Boss, here's your Lens today"**
 (or equivalent), then straight into the full table — not a re-explanation
-of what Founder's Lens is each time.
+of what Founder's Lens is each time. **Number the rows (2026-07-30
+addition)** — a leading `#` column, so the founder can reference an item
+by number ("do 3 and 7") instead of quoting it back. Applies to every
+Lens table from now on.
 
 # Instruction-delivery preference — Standard Instruction Form
 
