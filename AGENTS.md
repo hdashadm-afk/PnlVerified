@@ -14,6 +14,12 @@ umbrella brand/structure — Dipstify replaced "Katiwala" as the public-facing
 name (2026-07-20); this repo's own branding/UI has not been updated to match
 yet, flagged only, not done.
 
+**Read `katiwala-owner-os-`'s `docs/FOUNDER_PROFILE.md` at the start of
+every session (2026-07-31 addition).** Single reference for who the
+founder is (solo, no dev team, mobile-heavy, terse phrasing) and
+consolidates every standing preference below plus working-style lessons
+from direct feedback not captured anywhere else.
+
 # Session-start operating preference — "Founder's Lens"
 
 Confirmed by the founder 2026-07-21 (same rule now in `katiwala-owner-os-`'s
